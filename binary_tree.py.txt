@@ -1,0 +1,49 @@
+"""
+Binary Tree Traversal Engine
+Author: Krishna Vaishy
+Description: Constructs a basic binary tree and demonstrates 
+an In-Order traversal (Left, Root, Right).
+"""
+
+class Node:
+    """
+    Represents a single node in the binary tree.
+    Each node holds a value and pointers to its left and right children.
+    """
+    def __init__(self, key):
+        self.left = None
+        self.right = None
+        self.val = key
+
+def print_inorder(root):
+    """
+    Executes an In-Order traversal.
+    Algorithm: Recursively visit the left subtree, print the root node, 
+    then recursively visit the right subtree.
+    """
+    if root:
+        # 1. Traverse left subtree
+        print_inorder(root.left)
+        
+        # 2. Visit the current node
+        print(root.val, end=" ")
+        
+        # 3. Traverse right subtree
+        print_inorder(root.right)
+
+# Constructing the binary tree structure
+if __name__ == "__main__":
+    # Create the root node
+    root = Node(10)
+    
+    # Add layer 1 children
+    root.left = Node(5)
+    root.right = Node(15)
+    
+    # Add layer 2 children to the left node
+    root.left.left = Node(3)
+    root.left.right = Node(7)
+
+    # Output: The expected order is 3, 5, 7, 10, 15
+    print("In-order Traversal (Left, Root, Right):")
+    print_inorder(root)
